@@ -30,8 +30,4 @@
   copy:
     src: logstash-forwarder.ini
     dest: /etc/supervisord.d/logstash-forwarder.ini
-  register: supervisord
-
-- name: reload supervisord
-  shell: supervisorctl reload
-  when: supervisord.changed
+  notify: reload supervisor
