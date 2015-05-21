@@ -22,8 +22,8 @@
     dest: /etc/pki/tls/certs/logstash-forwarder.crt
 
 - name: copy the configuration file
-  copy:
-    src: logstash-forwarder.json
+  template:
+    src: logstash-forwarder.json.j2
     dest: /etc/logstash-forwarder.json
 
 - name: create supervisor config

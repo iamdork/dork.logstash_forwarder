@@ -1,0 +1,13 @@
+{
+  "network": {
+  "servers": [ "172.17.42.1:5000" ],
+  "ssl ca": "/etc/pki/tls/certs/logstash-forwarder.crt",
+  "timeout": 15
+},
+
+"files": [
+  {% for path in logstash_forwarder_paths %}
+  { "paths": ["{{ path.path }}"], "fields": { "type": "{{ path.type }}" } }{% if not loop.last %},{% endif %}
+  {% endfor %}
+]
+}

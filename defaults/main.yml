@@ -1,0 +1,3 @@
+logstash_forwarder_paths:
+  - path: /var/log/messages
+    type: syslog
