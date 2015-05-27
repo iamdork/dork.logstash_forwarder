@@ -1,3 +1,3 @@
-logstash_forwarder_paths:
-  - path: /var/log/messages
-    type: syslog
+logstash_forwarder_settings:
+  - paths: ['/var/log/messages']
+    tags: 'syslog'

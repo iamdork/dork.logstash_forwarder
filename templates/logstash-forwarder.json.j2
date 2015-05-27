@@ -6,8 +6,17 @@
 },
 
 "files": [
-  {% for path in logstash_forwarder_paths %}
-  { "paths": ["{{ path.path }}"], "fields": { "type": "{{ path.type }}" } }{% if not loop.last %},{% endif %}
+  {% for setting in logstash_forwarder_settings %}
+  {
+    "paths": [
+      {% for path in setting.paths %}
+      "{{ path }}"{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ],
+    "fields": {
+      "tags": "{{ setting.tags }}"
+    }
+  }{% if not loop.last %},{% endif %}
   {% endfor %}
 ]
 }
