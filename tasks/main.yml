@@ -35,10 +35,4 @@
 - name: start logstash forwarder
   supervisorctl:
     name: logstash-forwarder
-    state: started
-
-- name: restart logstash forwarder
-  supervisorctl:
-    name: logstash-forwarder
-    state: started
-  when: supervisor.changed
+    state: present
